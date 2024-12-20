@@ -9,7 +9,7 @@ from utils import get_info_outliers
 st.title("HW_1. Тимонин Андрей Сергевич")
 st.header("Загрузка данных")
 
-API_KEY = '1824818bd112e614de8890e506dbabfe'
+API_KEY = ...
 list_city_name = ['New York', 'London', 'Paris', 'Tokyo', 'Moscow', 'Sydney',
 				  'Berlin', 'Beijing', 'Rio de Janeiro', 'Dubai', 'Los Angeles',
 				  'Singapore', 'Mumbai', 'Cairo', 'Mexico City']
