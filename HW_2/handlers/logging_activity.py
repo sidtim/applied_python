@@ -88,6 +88,7 @@ async def choose_water_drink(
             _cur_state = (await state.get_data())["logged_water"]
             await state.update_data(logged_water=_cur_state + float(input_water))
         await message.answer(f"{await state.get_data()}")
+        await message.answer(f"До выполнения нормы осталось {(await state.get_data())['water_goal'] - (await state.get_data())['logged_water']}")
     except:
         await message.answer(
             "Ошибка: некорректно введен аргумент. \nПередайте в качестве аргумента количество выпитой воды в следующем формате: \n/log_water <i>numeric</i>"
