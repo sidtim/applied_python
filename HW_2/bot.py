@@ -2,10 +2,9 @@ import asyncio
 import logging
 import sys
 
-from aiogram import Bot, Dispatcher, F, types
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters.command import Command
 
 from config import TOKEN
 from handlers import daily_norm_calories, logging_activity
@@ -19,20 +18,19 @@ logging.basicConfig(level=logging.INFO)
 # Объект бота
 bot = Bot(
     token=TOKEN,
-    default=DefaultBotProperties(
-        parse_mode=ParseMode.HTML
-        # parse_mode=ParseMode.MARKDOWN_V2
-    ),
+    default=DefaultBotProperties(parse_mode=ParseMode.HTML)
 )
 # Диспетчер
 dp = Dispatcher()
+# Подключаем middleware
+dp.message.middleware(LoggingMiddleware())
 # Подключение роутера
 dp.include_routers(daily_norm_calories.router, logging_activity.router)
-dp.message.middleware(LoggingMiddleware())
 
 
 # Запуск процесса полинга новых апдейтов
 async def main():
+    print("Бот запущен!")
     await dp.start_polling(bot)
 
 
