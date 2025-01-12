@@ -5,7 +5,7 @@ kaggle.json
 # IMG
 *.jpg
 *.jpeg
-*.png
+#*.png
 *.webp
 # Folders
 app/backend/__pycache__/
